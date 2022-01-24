@@ -17,7 +17,7 @@ pipeline{
                 branch "develop"
             }
             steps{
-               withSonarQubeEnv(credentialsId: 'sonar7') {
+               withSonarQubeEnv('sonar7') {
                     sh "mvn sonar:sonar"
                 }
             }
