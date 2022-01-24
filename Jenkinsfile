@@ -47,7 +47,7 @@ pipeline{
         }
         stage("Deploy To QA"){
             when {
-                branch "qa"
+                branch "qa branch"
             }
             steps{
                echo "deploying to qa server init...."
