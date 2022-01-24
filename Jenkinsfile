@@ -50,7 +50,7 @@ pipeline{
                 branch "qa"
             }
             steps{
-               echo "deploying to qa server...."
+               echo "deploying to qa server init...."
             }
         }
         stage("Deploy To production"){
