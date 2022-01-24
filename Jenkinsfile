@@ -12,12 +12,27 @@ pipeline{
                sh "mvn package"
             }
         }
-        stage("SonarQube"){
+        stage("SonarQube Analysis"){
             when {
                 branch "develop"
             }
             steps{
-               echo "sonarqube analysis...."
+               withSonarQubeEnv(credentialsId: 'sonar7') {
+                    sh "mvn sonar:sonar"
+                }
+            }
+        }
+        stage("sonar status"){
+            when { 
+                branch "develop"
+            }
+            steps{
+                timeout(time: 1,unit: 'hour'){
+                    def qg = waitforQualitygate()
+                    if (qg.status!='ok'){
+                        error "pipeline aborted due to quality gate failure : ${qg.status}"
+                    }
+                }
             }
         }
         stage("Nexus"){
