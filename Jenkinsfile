@@ -27,7 +27,7 @@ pipeline{
                 branch "develop"
             }
             steps{
-                 timeout(time: 1, unit: 'hour'){
+                 timeout(time: 1, unit: 'HOURS'){
                     script{
                         def qg = waitforQualitygate()
                         if (qg.status !='ok'){
