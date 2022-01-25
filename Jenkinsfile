@@ -27,8 +27,8 @@ pipeline{
                 branch "develop"
             }
             steps{
-                    script{
-                        timeout(time: 1,unit: 'hour'){
+                        timeout(time: 1, unit: 'hour') {
+                            script{
                         def qg = waitforQualitygate()
                         if (qg.status != 'ok') {
                             error "pipeline aborted due to quality gate failure: ${qg.status}"
