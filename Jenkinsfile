@@ -22,7 +22,7 @@ pipeline{
                 }
             }
         }
-        stage("sonar status"){
+        stage("SonarQube status"){
             when { 
                 branch "develop"
             }
